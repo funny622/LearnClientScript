@@ -1,0 +1,108 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>HomePage</title>
+    <!--Style-->
+    <link rel="stylesheet/less" type="text/css" href="../Content/Style.less" />
+
+    <!--Library-->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.7.1/less.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--Icon-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+
+    <div ng-app="myTable" ng-controller="dataCtrl" class="clearfix">
+
+        <div class="container-fluid" ng-style="panel1">
+            <h1>Documents</h1>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td><i style="font-size:20px" class="fa">&#xf016;</i></td>
+                        <td>Name<i style="font-size:20px;padding-left:5px;" class="fa">&#xf107;</i></td>
+                        <td>Modified<i style="font-size:20px;padding-left:5px;" class="fa">&#xf107;</i></td>
+                        <td>Modified by<i style="font-size:20px;padding-left:5px;" class="fa">&#xf107;</i></td>
+                        <td><i style="font-size:20px" class="fa;padding-left:5px;">&#43;</i>Add column</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="x in files" ng-click="showbox($index)">
+                        <td><span ng-class="{true:'yes', false:'no'}[$index == selector && tbIndex == true ]"><i class="fa fa-check-circle" style="font-size:20px;color:red"></i></span></td>
+                        <td><img src="{{x.img}}" /></td>
+                        <td>{{x.name}}</td>
+                        <td>{{x.modified}}</td>
+                        <td>{{x.modifiedby}}</td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="container" ng-show="detailFile" ng-style="panel2">
+            <div class="Detail">
+                <div>
+                    <div class="clearfix title">
+                        <div class="pad">
+                            <img src="{{img}}" />
+                            <span>{{name}}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="pad">
+                    <br />
+                    <div>
+                        <span>Properties</span>
+                        <a href="#">Edit all</a>
+                    </div>
+                    <br />
+                    <b>Name *</b>
+                    <p>{{name}}</p>
+                    <br />
+                    <b>Title</b>
+                    <p>Không biết luôn</p>
+                    <br />
+                </div>
+            </div>
+            <div class="MoreDetail">
+                <div class="pad">
+                    <div class="center">
+                        <i class="material-icons">&#xe5d2;</i>
+                        <p>More details</p>
+                        <br />
+                    </div>
+                    <p>Recent Activity</p>
+                    <p>This week</p>
+                    <div class="clearfix info">
+                        <img class="avatar" src="../Image/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg" />
+                        <div class="content">
+                            <h4>Administrator MOD</h4>
+                            <p>made edits</p>
+                            <p>A few seconds ago</p>
+                        </div>
+                    </div>
+                    <div class="clearfix info">
+                        <img class="avatar" src="../Image/A-fluffy-cat-looking-funny-surprised-or-concerned.jpg" />
+                        <div class="content">
+                            <h4>Administrator MOD</h4>
+                            <p>created <span style="color:deeppink;">"Text.txt"</span></p>
+                            <p>A few seconds ago</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="../Script/Function.js"></script>
+    </div>
+</body>
+</html>
